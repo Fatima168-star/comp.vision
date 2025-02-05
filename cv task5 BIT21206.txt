@@ -1,0 +1,23 @@
+% Read the image from file
+f = imread('spectrum.tif');  % 'spectrum.tif' should be in your working directory
+
+% Apply logarithmic transformation
+% Convert the image to double, then compute log(1 + f)
+% Note: Here the constant c = 1 is used in the transformation: log(1 + f)
+logTransformed = log(1 + double(f));
+
+% Normalize the transformed image to the range [0, 1]
+normalizedImg = mat2gray(logTransformed);
+
+% Convert the normalized image to uint8
+g = im2uint8(normalizedImg);
+
+% Display the original image
+figure;
+imshow(f);
+title('Original Image');
+
+% Display the logarithmically transformed image
+figure;
+imshow(g);
+title('Logarithmically Transformed Image');

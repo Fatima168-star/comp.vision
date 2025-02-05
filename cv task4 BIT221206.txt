@@ -1,0 +1,24 @@
+% Read the image
+f = imread('Xray_share.jpg');
+% Adjust image brightness/contrast using imadjust function with gamma=0.5
+g = imadjust(f, [], [], 0.5);
+% Display the original image
+figure, imshow(f);
+% Display the adjusted image in a new figure window
+figure, imshow(g);
+% Read the image from file
+f = imread('Xray_share.jpg');
+
+% Adjust the image intensity with gamma correction (gamma = 0.5)
+% Empty arrays [] indicate that the default input and output ranges are used.
+g = imadjust(f, [], [], 0.5);
+
+% Display the original image in one figure window
+figure;
+imshow(f);
+title('Original Image');
+
+% Display the gamma-adjusted image in another figure window
+figure;
+imshow(g);
+title('Gamma Adjusted Image (gamma = 0.5)');

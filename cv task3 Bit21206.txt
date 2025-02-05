@@ -1,0 +1,13 @@
+pkg load image
+pkg load image;          % Load the image package
+f = imread('xray_share.jpg');   % Read the image file
+g = imcomplement(f);      % Compute the complement of the image
+
+figure, imshow(f);       % Display the original image in one figure
+figure, imshow(g);       % Display the complement image in a new figure
+figure, imshow(f); drawnow;
+figure, imshow(g); drawnow;
+
+>> f = imread('xray.tif'); 
+>> g = imcomplement(f);
+>> imshow(f), figure, imshow(g)
