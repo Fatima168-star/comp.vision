@@ -1,0 +1,29 @@
+% Function to segment the image based on color
+
+function [red_mask, green_mask, yellow_mask] = colorSegmentation(img)
+
+    % Convert the image from RGB to HSV color space
+    hsv_img = rgb2hsv(img);
+    hue = hsv_img(:,:,1); % Hue channel
+
+    % Define color ranges for the Hue channel
+    red_min = 0.0; red_max = 0.05;   % Red color range in Hue channel
+    green_min = 0.25; green_max = 0.45; % Green color range in Hue channel
+    yellow_min = 0.12; yellow_max = 0.2; % Yellow color range in Hue channel
+
+    % Create binary masks for each color
+    red_mask = (hue >= red_min) & (hue <= red_max);
+    green_mask = (hue >= green_min) & (hue <= green_max);
+    yellow_mask = (hue >= yellow_min) & (hue <= yellow_max);
+
+    % Optional: Apply morphological operations to clean the masks
+    red_mask = imopen(red_mask, strel('disk', 5)); 
+    green_mask = imopen(green_mask, strel('disk', 5)); 
+    yellow_mask = imopen(yellow_mask, strel('disk', 5)); 
+
+    % Display the masks (optional)
+    figure;
+    subplot(1,3,1); imshow(red_mask); title('Red Mask');
+    subplot(1,3,2); imshow(green_mask); title('Green Mask');
+    subplot(1,3,3); imshow(yellow_mask); title('Yellow Mask');
+end
