@@ -1,0 +1,16 @@
+% Main Script for Fruit Color Recognition
+
+% Load and preprocess the image
+imagePath = 'fruit_image.jpg';  % Replace with your image path
+img = imread(imagePath);
+
+% Call the color segmentation function
+[red_mask, green_mask, yellow_mask] = colorSegmentation(img);
+
+% Call the feature extraction function to classify the dominant color
+dominant_color = extractFeatures(red_mask, green_mask, yellow_mask);
+
+% Display the results
+figure;
+imshow(img);
+title(['Detected Fruit Color: ', dominant_color]);
