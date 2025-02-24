@@ -1,0 +1,20 @@
+% Function to extract features and classify dominant color
+
+function dominant_color = extractFeatures(red_mask, green_mask, yellow_mask)
+    
+    % Calculate the area of each color mask (sum of pixels)
+    red_area = sum(red_mask(:));
+    green_area = sum(green_mask(:));
+    yellow_area = sum(yellow_mask(:));
+
+    % Classify the dominant color based on the largest area
+    if red_area > green_area && red_area > yellow_area
+        dominant_color = 'Red';
+    elseif green_area > red_area && green_area > yellow_area
+        dominant_color = 'Green';
+    elseif yellow_area > red_area && yellow_area > green_area
+        dominant_color = 'Yellow';
+    else
+        dominant_color = 'Unknown';
+    end
+end
